@@ -27,60 +27,61 @@
             <kind>1</kind>
             <string>playerSpeed = 5;
 
+//maybe apply force instead of static movement
+
 //Shortcuts for keypresses
-MOVELEFT = keyboard_check(ord('A'));
-MOVERIGHT = keyboard_check(ord('D'));
-MOVEUP = keyboard_check(ord('W'));
-MOVEDOWN = keyboard_check(ord('S'));
+MOVELEFT = keyboard_check(vk_left);
+MOVERIGHT = keyboard_check(vk_right);
+MOVEUP = keyboard_check(vk_up);
+MOVEDOWN = keyboard_check(vk_down);
 
 //Move Player
 if (MOVELEFT) 
 { 
-x -= playerSpeed; 
+phy_position_x -= playerSpeed; 
 }
 
 if (MOVERIGHT) 
 { 
-x += playerSpeed; 
+phy_position_x += playerSpeed; 
 }
 
 if (MOVEUP) 
 { 
-y -= playerSpeed; 
+phy_position_y -= playerSpeed; 
 }
 
 if (MOVEDOWN)
 { 
-y += playerSpeed; 
+phy_position_y += playerSpeed; 
 }
 
 //horizontal collission
-if (place_meeting(x+1,y,player2)){
-    x -= global.knockback_distance;
+if (place_meeting(x+1,y,player1)){
+    phy_position_x -= global.knockback_distance;
     audio_play_sound(rooster0, 10, false);
 }
-if (place_meeting(x-1,y,player2)){
-    x += global.knockback_distance;
+if (place_meeting(x-1,y,player1)){
+    phy_position_x += global.knockback_distance;
     audio_play_sound(rooster0, 10, false);
 }
     
 //vertical collission
-if (place_meeting(x,y+1,player2)){
-    y -= global.knockback_distance;
+if (place_meeting(x,y+1,player1)){
+    phy_position_y -= global.knockback_distance;
     audio_play_sound(rooster0, 10, false);
 }
-if (place_meeting(x,y-1,player2)){
-    y += global.knockback_distance;
+if (place_meeting(x,y-1,player1)){
+    phy_position_y += global.knockback_distance;
     audio_play_sound(rooster0, 10, false);
 }
-    
 </string>
           </argument>
         </arguments>
       </action>
     </event>
   </events>
-  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
@@ -91,5 +92,10 @@ if (place_meeting(x,y-1,player2)){
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>-64,-64</point>
+    <point>64,-64</point>
+    <point>64,64</point>
+    <point>-64,64</point>
+  </PhysicsShapePoints>
 </object>
