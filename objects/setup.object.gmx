@@ -25,15 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.gravity_x = 0;
-global.gravity_y = 0;
-physics_world_gravity(0, 5)
-global.knockback_distance = 100;
-global.movementspeed_p1 = 5;
+            <string>global.movementspeed_p1 = 5;
 global.movementspeed_p2 = 5;
 global.movementspeed_wind = 5;
 
-global.vspeed_max = 1;
+instance_create(50+sprite_get_width(spr_player1)/2,room_height/2, player1);
+instance_create(room_width-50-sprite_get_width(spr_player2)/2,room_height/2, player2);
 
 show_debug_message("Global Variables Set");
 </string>
