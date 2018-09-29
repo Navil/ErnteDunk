@@ -26,14 +26,41 @@
           <argument>
             <kind>1</kind>
             <string>playerSpeed = 5;
-knockingback = undefined;
+
+knockingback = 0; // -1= left, 0= none, 1= right
 knockback_distance_touch = 50;
-knockback_duration_wind = 1.5; //seconds
+knockback_duration_wind = 2*room_speed; //seconds
+
 can_shoot = true;
-winds = ds_list_create();
+
+damage_immune = false;
+damage_immune_duration = 3*room_speed;
 
 image_xscale = view_direction;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>damage_immune = false;
 </string>
           </argument>
         </arguments>
@@ -56,7 +83,7 @@ image_xscale = view_direction;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>knockingback = undefined;
+            <string>knockingback = 0;
 </string>
           </argument>
         </arguments>
@@ -103,22 +130,23 @@ image_xscale = view_direction;
           <argument>
             <kind>1</kind>
             <string>//show_debug_message(view_direction);
-if(knockingback == undefined){
+if(knockingback == 0){
 
 if (MOVELEFT) { 
     x -= playerSpeed; 
     view_direction = -1;
-    image_xscale = -1;
+    image_xscale = view_direction;
 }
 
 if (MOVERIGHT) { 
     x += playerSpeed; 
     view_direction = 1;
-    image_xscale = 1;
+    image_xscale = view_direction;
 }
 
 if (MOVEUP) { 
     y -= playerSpeed; 
+    show_debug_message(image_angle);
 }
 
 if (MOVEDOWN){ 
@@ -131,9 +159,9 @@ if (ATTACK){
         inst = instance_create(x, y, obj_wind);
         inst.speed = 10;
         if(view_direction==1)
-            inst.direction = 0;
+            inst.direction = 0; //right
         else
-            inst.direction = 180;
+            inst.direction = 180; //left
             
         inst.owner = id;
         
@@ -142,57 +170,15 @@ if (ATTACK){
     }
 }
 }
-//otherPlayer = player1;
-//horizontal collission
 
-var hitId = instance_place(x+5,y,obj_wind);
-if (hitId != noone){
-    if(hitId.owner != id &amp;&amp; knockingback == undefined){
-        //show_debug_message("Hit from the right");
-        
-        //x -= knockback_distance_wind;
-        knockingback = "left";
-        alarm[1] = room_speed * knockback_duration_wind;
-        instance_destroy(hitId);
-    }  
-    //audio_play_sound(rooster0, 10, false);
-}
 
-hitId = instance_place(x-5,y,obj_wind);
-if (hitId != noone){
-    if(hitId.owner != id &amp;&amp; knockingback == undefined){
-        //show_debug_message("Hit from the left");
-        knockingback = "right";
-        alarm[1] = room_speed * knockback_duration_wind;
-        instance_destroy(hitId);
-    }  
-    //audio_play_sound(rooster0, 10, false);
-}
-    
-//vertical collission
-hitId = instance_place(x,y+5,obj_wind);
-if (hitId != noone){
-    //show_debug_message(hitId);
-    if(hitId.owner != id &amp;&amp; knockingback != undefined){
-        //y -= knockback_distance_wind;
-        instance_destroy(hitId);
-    }  
-    //audio_play_sound(rooster0, 10, false);
-}
-hitId = instance_place(x,y-5,obj_wind);
-if (hitId != noone){
-    //show_debug_message(hitId);
-    if(hitId.owner != id &amp;&amp; knockingback != undefined){
-        //y += knockback_distance_wind;
-        instance_destroy(hitId);
-    }  
-    //audio_play_sound(rooster0, 10, false);
-}
-
-if (knockingback == "right") {
+if (knockingback == 1) {
     x += 5;
-}else if(knockingback == "left"){
+    show_debug_message(room_speed);
+    image_angle += radtodeg(360/knockback_duration_wind);
+}else if(knockingback == -1){
     x -= 5;
+    image_angle += knockback_duration_wind/720;
 }
 
 </string>
@@ -235,6 +221,41 @@ if(diffX &gt; diffY){
 }
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_wind">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(other.owner != id &amp;&amp; knockingback == 0 &amp;&amp; !damage_immune){
+    //show_debug_message("Hit from the right");
+    
+    //x -= knockback_distance_wind;
+    if(other.direction = 0)
+        knockingback = 1;
+    else
+        knockingback = -1;
+        
+    damage_immune = true;
+    alarm[1] = knockback_duration_wind;
+    alarm[2] = damage_immune_duration;
+}  
 </string>
           </argument>
         </arguments>
