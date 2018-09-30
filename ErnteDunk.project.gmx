@@ -15,14 +15,16 @@
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_wind</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_wall</background>
+    <background>background\bg_sky</background>
+  </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_menu_play</object>
     <object>objects\obj_shoot</object>
     <object>objects\player1</object>
     <object>objects\player2</object>
-    <object>objects\setup</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_wind</object>
     <object>objects\player</object>

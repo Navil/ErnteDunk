@@ -25,11 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(50+sprite_get_width(spr_player1)/2,room_height/2, player1);
-instance_create(room_width-50-sprite_get_width(spr_player2)/2,room_height/2, player2);
-
-show_debug_message("Global Variables Set");
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

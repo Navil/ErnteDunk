@@ -38,6 +38,8 @@ damage_immune_duration = 3*room_speed;
 
 image_xscale = view_direction;
 
+show_debug_message(image_angle)
+
 </string>
           </argument>
         </arguments>
@@ -84,6 +86,7 @@ image_xscale = view_direction;
           <argument>
             <kind>1</kind>
             <string>knockingback = 0;
+image_angle = 0;
 </string>
           </argument>
         </arguments>
@@ -146,7 +149,6 @@ if (MOVERIGHT) {
 
 if (MOVEUP) { 
     y -= playerSpeed; 
-    show_debug_message(image_angle);
 }
 
 if (MOVEDOWN){ 
@@ -171,14 +173,17 @@ if (ATTACK){
 }
 }
 
+x = clamp(x, abs(sprite_width)/2, room_width-abs(sprite_width)/2);
+//show_debug_message("Limiting movement to "+string(sprite_width/2)+ " and "+ string(room_width-sprite_width/2));
+y = clamp(y, sprite_height/2, room_height-sprite_height/2);
+
 
 if (knockingback == 1) {
     x += 5;
-    show_debug_message(room_speed);
-    image_angle += radtodeg(360/knockback_duration_wind);
+    image_angle += 720/knockback_duration_wind;
 }else if(knockingback == -1){
     x -= 5;
-    image_angle += knockback_duration_wind/720;
+    image_angle += 720/knockback_duration_wind;
 }
 
 </string>
