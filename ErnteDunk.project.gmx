@@ -14,6 +14,9 @@
     <sprite>sprites\spr_player2</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_wind</sprite>
+    <sprite>sprites\spr_wall_simple</sprite>
+    <sprite>sprites\spr_wall_1</sprite>
+    <sprite>sprites\spr_lives</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_wall</background>
@@ -25,9 +28,11 @@
     <object>objects\obj_shoot</object>
     <object>objects\player1</object>
     <object>objects\player2</object>
-    <object>objects\obj_wall</object>
     <object>objects\obj_wind</object>
     <object>objects\player</object>
+    <object>objects\obj_wall_simple</object>
+    <object>objects\obj_wall_1</object>
+    <object>objects\obj_wall</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\main_menu</room>

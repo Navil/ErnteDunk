@@ -10,8 +10,15 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>instance_create(50+sprite_get_width(spr_player1)/2,room_height/2, player1);
-instance_create(room_width-50-sprite_get_width(spr_player2)/2,room_height/2, player2);
+  <code>randomize();
+
+global.spawnX1 = 150+sprite_get_width(spr_player1)/2;
+global.spawnX2 = room_width-150-sprite_get_width(spr_player2)/2;
+global.spawnY = room_height/2;
+instance_create(global.spawnX1,global.spawnY, player1);
+instance_create(global.spawnX2,global.spawnY, player2);
+
+instance_create(0,0,obj_wall_simple);
 
 background_vspeed[0] = -8;
 
