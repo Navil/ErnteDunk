@@ -11,6 +11,7 @@
   <sprites name="sprites">
     <sprite>sprites\spr_menu_play</sprite>
     <sprite>sprites\spr_player1</sprite>
+    <sprite>sprites\spr_player2</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_wind</sprite>
   </sprites>
@@ -24,6 +25,7 @@
     <object>objects\setup</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_wind</object>
+    <object>objects\player</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\main_menu</room>
