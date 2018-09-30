@@ -12,8 +12,8 @@
   <showcolour>-1</showcolour>
   <code>randomize();
 
-global.spawnX1 = 150+sprite_get_width(spr_player1)/2;
-global.spawnX2 = room_width-150-sprite_get_width(spr_player2)/2;
+global.spawnX1 = 250+sprite_get_width(spr_player1)/2;
+global.spawnX2 = room_width-250-sprite_get_width(spr_player2)/2;
 global.spawnY = room_height/2;
 instance_create(global.spawnX1,global.spawnY, player1);
 instance_create(global.spawnX2,global.spawnY, player2);
