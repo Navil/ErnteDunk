@@ -3,14 +3,14 @@
   <type>0</type>
   <xorig>64</xorig>
   <yorigin>64</yorigin>
-  <colkind>0</colkind>
+  <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
   <bbox_right>127</bbox_right>
-  <bbox_top>0</bbox_top>
-  <bbox_bottom>127</bbox_bottom>
+  <bbox_top>8</bbox_top>
+  <bbox_bottom>123</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -21,5 +21,30 @@
   <height>128</height>
   <frames>
     <frame index="0">images\spr_player2_0.png</frame>
+    <frame index="1">images\spr_player2_1.png</frame>
+    <frame index="2">images\spr_player2_2.png</frame>
+    <frame index="3">images\spr_player2_3.png</frame>
+    <frame index="4">images\spr_player2_4.png</frame>
+    <frame index="5">images\spr_player2_5.png</frame>
+    <frame index="6">images\spr_player2_6.png</frame>
+    <frame index="7">images\spr_player2_7.png</frame>
+    <frame index="8">images\spr_player2_8.png</frame>
+    <frame index="9">images\spr_player2_9.png</frame>
+    <frame index="10">images\spr_player2_10.png</frame>
+    <frame index="11">images\spr_player2_11.png</frame>
+    <frame index="12">images\spr_player2_12.png</frame>
+    <frame index="13">images\spr_player2_13.png</frame>
+    <frame index="14">images\spr_player2_14.png</frame>
+    <frame index="15">images\spr_player2_15.png</frame>
+    <frame index="16">images\spr_player2_16.png</frame>
+    <frame index="17">images\spr_player2_17.png</frame>
+    <frame index="18">images\spr_player2_18.png</frame>
+    <frame index="19">images\spr_player2_19.png</frame>
+    <frame index="20">images\spr_player2_20.png</frame>
+    <frame index="21">images\spr_player2_21.png</frame>
+    <frame index="22">images\spr_player2_22.png</frame>
+    <frame index="23">images\spr_player2_23.png</frame>
+    <frame index="24">images\spr_player2_24.png</frame>
+    <frame index="25">images\spr_player2_25.png</frame>
   </frames>
 </sprite>

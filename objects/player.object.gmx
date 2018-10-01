@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>playerSpeed = 5;
+            <string>playerSpeed = 6;
 
 knockingback = 0; // -1= left, 0= none, 1= right
 knockback_distance_touch = 50;
