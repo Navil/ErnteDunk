@@ -50,7 +50,7 @@
             <kind>1</kind>
             <string>if(y &lt;= 10 &amp;&amp; !generated){
     //show_debug_message("y: "+string(y));
-    show_debug_message("Creating new wall");
+    //show_debug_message("Creating new wall");
     if(random(10) &gt;= 7)
         instance_create(0,room_height-8,obj_wall_1);
     else

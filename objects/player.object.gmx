@@ -40,7 +40,6 @@ image_xscale = view_direction;
 
 num_lives = 3;
 disabled = false;
-show_debug_message(image_angle)
 
 </string>
           </argument>
@@ -191,9 +190,11 @@ if (MOVEDOWN){
     y += playerSpeed; 
 }
 
-if (ATTACK){
-    var inst;
+if (ATTACK){ 
     if (can_shoot){
+    
+        var inst;
+        show_debug_message("Attacking "+string(x)+" "+string(y));
         inst = instance_create(x, y, obj_wind);
         inst.speed = 10;
         if(view_direction==1)
@@ -319,7 +320,7 @@ if(diffX &gt; diffY){
           <argument>
             <kind>1</kind>
             <string>if(other.owner != id &amp;&amp; knockingback == 0 &amp;&amp; !damage_immune){
-    //show_debug_message("Hit from the right");
+    //show_debug_message("Hit");
     
     //x -= knockback_distance_wind;
     if(other.direction = 0)
