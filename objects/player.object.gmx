@@ -27,6 +27,13 @@
             <kind>1</kind>
             <string>playerSpeed = 6;
 
+player_gravity = 3;
+jumping = false;
+jump_on_cooldown = false;
+jump_duration = 0.5 * room_speed;
+jump_cooldown = 1.5 * room_speed;
+jump_speed = 25;
+
 knockingback = 0; // -1= left, 0= none, 1= right
 knockback_distance_touch = 50;
 knockback_duration_wind = 2*room_speed; //seconds
@@ -40,6 +47,11 @@ image_xscale = view_direction;
 
 num_lives = 3;
 disabled = false;
+
+scale = 0.8;
+image_xscale *= scale;
+image_yscale *= scale;
+
 
 </string>
           </argument>
@@ -66,13 +78,92 @@ disabled = false;
             <string>if(player_num == 1){
     x = global.spawnX1;
     y = global.spawnY;
+    view_direction = 1;
 }else{
     x = global.spawnX2;
     y = global.spawnY;
+    view_direction = -1;
 }
+image_xscale = view_direction*scale;
 disabled = false;
 damage_immune = false;
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>jump_on_cooldown</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>false</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>jumping</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>false</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_speed</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>1</string>
           </argument>
         </arguments>
       </action>
@@ -167,34 +258,48 @@ image_angle = 0;
             <string>if (disabled) {
    exit;
 }
+
+y += player_gravity;
+
 //show_debug_message(view_direction);
 if(knockingback == 0){
 
 if (MOVELEFT) { 
     x -= playerSpeed; 
     view_direction = -1;
-    image_xscale = view_direction;
+    image_xscale = view_direction*scale;
 }
 
 if (MOVERIGHT) { 
     x += playerSpeed; 
     view_direction = 1;
-    image_xscale = view_direction;
+    image_xscale = view_direction*scale;
 }
 
-if (MOVEUP) { 
-    y -= playerSpeed; 
+if (MOVEUP &amp;&amp; !jump_on_cooldown) { 
+    jumping = true;
+    jump_on_cooldown = true;
+    //y -= playerSpeed*; 
+    alarm[3] = jump_duration;
+    alarm[4] = jump_cooldown;
+    image_speed = 10;
 }
 
-if (MOVEDOWN){ 
-    y += playerSpeed; 
+if(!jumping){
+    if (MOVEDOWN){ 
+        y += playerSpeed + playerSpeed/2; 
+        image_speed = 0.5;
+    }else{
+        image_speed = 1;
+    }
 }
+
 
 if (ATTACK){ 
     if (can_shoot){
     
         var inst;
-        show_debug_message("Attacking "+string(x)+" "+string(y));
+        //show_debug_message("Attacking "+string(x)+" "+string(y));
         inst = instance_create(x, y, obj_wind);
         inst.speed = 10;
         if(view_direction==1)
@@ -209,7 +314,10 @@ if (ATTACK){
     }
 }
 }
-
+if(jumping){
+    show_debug_message("Jumping");
+    y -= jump_speed;
+}
 x = clamp(x, abs(sprite_width)/2, room_width-abs(sprite_width)/2);
 //show_debug_message("Limiting movement to "+string(sprite_width/2)+ " and "+ string(room_width-sprite_width/2));
 y = clamp(y, sprite_height/2, room_height-sprite_height/2);
@@ -245,7 +353,8 @@ if (knockingback == 1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!damage_immune){
+            <string>if(!disabled){
+    show_debug_message("Hit Wall");
     num_lives -= 1;
     if(num_lives &lt;= 0){
         room_restart();
@@ -279,7 +388,10 @@ if (knockingback == 1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>diffX = abs(x - other.x);
+            <string>jumping = false;
+other.jumping = false;
+
+diffX = abs(x - other.x);
 diffY = abs(y - other.y);
 
 if(diffX &gt; diffY){
@@ -331,6 +443,8 @@ if(diffX &gt; diffY){
     damage_immune = true;
     alarm[1] = knockback_duration_wind;
     alarm[2] = damage_immune_duration;
+    
+    instance_destroy(other);
 }  
 </string>
           </argument>
