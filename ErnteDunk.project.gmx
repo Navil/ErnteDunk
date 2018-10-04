@@ -33,6 +33,9 @@
     <object>objects\obj_wall_simple</object>
     <object>objects\obj_wall_1</object>
     <object>objects\obj_wall</object>
+    <object>objects\obj_powerup_gen</object>
+    <object>objects\obj_powerup</object>
+    <object>objects\obj_speedup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\main_menu</room>
