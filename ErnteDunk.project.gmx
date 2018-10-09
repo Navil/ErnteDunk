@@ -42,6 +42,7 @@
     <object>objects\obj_powerup_gen</object>
     <object>objects\obj_powerup</object>
     <object>objects\obj_speedup</object>
+    <object>objects\obj_egg</object>
     <object>objects\obj_title</object>
   </objects>
   <rooms name="rooms">
