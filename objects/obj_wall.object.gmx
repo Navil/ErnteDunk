@@ -50,17 +50,19 @@ powerup_y = 1150;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(y &lt;= 10 &amp;&amp; !generated){
+            <string>if(global.gameover)
+    exit;
+if(y &lt;= 10 &amp;&amp; !generated){
     //show_debug_message("y: "+string(y));
     //show_debug_message("Creating new wall");
-    if(random(10) &gt;= 1){
+    if(random(10) &gt;= 5){
         instance_create(0,room_height-8,obj_wall_1);
         if(random(2) &gt;=  1){
             instance_create(powerup_x,powerup_y,obj_speedup);
             instance_create(room_width-powerup_x,powerup_y,obj_speedup);
         }else{
             instance_create(powerup_x,powerup_y,obj_health);
-            instance_create(room_width-powerup_x+10,powerup_y,obj_health);
+            instance_create(room_width-powerup_x-22,powerup_y,obj_health);
         }
     }
     else

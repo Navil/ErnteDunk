@@ -30,9 +30,12 @@
     <background>background\bg_sky_new</background>
   </backgrounds>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\myFont</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_exit</object>
-    <object>objects\obj_shoot</object>
+    <object>objects\obj_start</object>
     <object>objects\player1</object>
     <object>objects\player2</object>
     <object>objects\obj_wind</object>
@@ -45,10 +48,11 @@
     <object>objects\obj_egg</object>
     <object>objects\obj_title</object>
     <object>objects\obj_health</object>
+    <object>objects\obj_player_menu</object>
+    <object>objects\obj_wind_menu</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\main_menu</room>
-    <room>rooms\shoot_test</room>
     <room>rooms\game</room>
   </rooms>
   <help>

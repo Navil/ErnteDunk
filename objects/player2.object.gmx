@@ -87,6 +87,7 @@ event_inherited();
             <string>for(var i = 0;i&lt;num_lives;i++){
     draw_sprite(spr_lives, 0, room_width - i*32 - 64, 32);
 }
+event_inherited();
 </string>
           </argument>
         </arguments>

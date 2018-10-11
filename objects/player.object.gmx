@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>playerSpeed = 6;
+            <string>global.gameover = false;
+playerSpeed = 6;
 
 player_gravity = 3;
 jumping = false;
@@ -88,6 +89,29 @@ image_xscale = view_direction*scale;
 disabled = false;
 damage_immune = false;
 visible = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="9">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_goto(main_menu);
 </string>
           </argument>
         </arguments>
@@ -292,7 +316,9 @@ visible = true;
    visible = !visible;
    exit;
 }
-
+if(global.gameover)
+    exit;
+    
 y += player_gravity;
 
 //show_debug_message(view_direction);
@@ -437,13 +463,16 @@ instance_destroy(other);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!disabled){
+            <string>if(!disabled &amp;&amp; !global.gameover){
     //show_debug_message("Hit Wall");
     num_lives -= 1;
+    audio_play_sound(rooster0, 10, false);
     if(num_lives &lt;= 0){
-        room_restart();
+        //room_restart();
+        background_vspeed[0] = 0;
+        global.gameover = true;
+        alarm[9] = 3*room_speed;
     }else{
-        audio_play_sound(rooster0, 10, false);
         damage_immune = true;
         alarm[10] = 3*room_speed;
         
@@ -555,10 +584,18 @@ if(diffX &gt; diffY){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black)
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-draw_text(200, 200, "Game Over!")
+            <string>if(global.gameover){
+    draw_set_valign(fa_middle);
+    draw_set_halign(fa_center);
+    draw_set_colour(c_black);
+    draw_set_font(myFont) 
+    if(player1.num_lives &lt;= 0){
+        draw_text(room_width/2, room_height/2, "PLAYER 2 WON!");
+    }else if(player2.num_lives &lt;= 0){
+        draw_text(room_width/2, room_height/2, "PLAYER 1 WON!");
+    }
+}
+
 </string>
           </argument>
         </arguments>
