@@ -22,6 +22,7 @@
     <sprite>sprites\spr_title</sprite>
     <sprite>sprites\spr_start</sprite>
     <sprite>sprites\spr_exit</sprite>
+    <sprite>sprites\spr_speed_up</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_wall</background>
@@ -39,11 +40,11 @@
     <object>objects\obj_wall_simple</object>
     <object>objects\obj_wall_1</object>
     <object>objects\obj_wall</object>
-    <object>objects\obj_powerup_gen</object>
     <object>objects\obj_powerup</object>
     <object>objects\obj_speedup</object>
     <object>objects\obj_egg</object>
     <object>objects\obj_title</object>
+    <object>objects\obj_health</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\main_menu</room>
