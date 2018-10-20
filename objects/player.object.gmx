@@ -38,11 +38,13 @@ jump_speed = 25;
 knockingback = 0; // -1= left, 0= none, 1= right
 knockback_distance_touch = 50;
 knockback_duration_wind = 2*room_speed; //seconds
+knockback_duration_egg = 2.5*room_speed; //seconds
 
 can_shoot = true;
 
 damage_immune = false;
 damage_immune_duration = 3*room_speed;
+hasEgg = false;
 
 image_xscale = view_direction;
 
@@ -359,8 +361,13 @@ if (ATTACK){
     if (can_shoot){
     
         var inst;
+        var obj = obj_wind;
+        if(hasEgg){
+            obj = obj_egg;
+            hasEgg = false;
+        }
         //show_debug_message("Attacking "+string(x)+" "+string(y));
-        inst = instance_create(x, y, obj_wind);
+        inst = instance_create(x, y, obj);
         inst.speed = 10;
         if(view_direction==1)
             inst.direction = 0; //right
@@ -396,6 +403,32 @@ if (knockingback == 1) {
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_eggup">
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hasEgg</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>true</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_health">
       <action>
         <libid>1</libid>
@@ -417,6 +450,45 @@ if (knockingback == 1) {
     num_lives += 1;
 }
 instance_destroy(other);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_egg">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(other.owner != id &amp;&amp; knockingback == 0 &amp;&amp; !damage_immune){
+    //show_debug_message("Hit");
+    
+    //x -= knockback_distance_wind;
+    if(other.direction = 0)
+        knockingback = 1;
+    else
+        knockingback = -1;
+        
+    damage_immune = true;
+    alarm[1] = knockback_duration_egg;
+    alarm[2] = damage_immune_duration;
+    
+    jumping = false;
+    
+    instance_destroy(other);
+}  
 </string>
           </argument>
         </arguments>

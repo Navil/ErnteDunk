@@ -88,6 +88,8 @@ event_inherited();
             <string>for(var i = 0;i&lt;num_lives;i++){
     draw_sprite(spr_lives, 0, i*32 + 32, 32);
 }
+if(hasEgg)
+    draw_sprite(spr_egg, 0, 64, 80);
 event_inherited();
 </string>
           </argument>

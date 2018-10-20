@@ -50,6 +50,7 @@
     <object>objects\obj_health</object>
     <object>objects\obj_player_menu</object>
     <object>objects\obj_wind_menu</object>
+    <object>objects\obj_eggup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\main_menu</room>

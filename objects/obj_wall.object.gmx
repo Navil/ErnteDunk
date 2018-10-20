@@ -57,12 +57,16 @@ if(y &lt;= 10 &amp;&amp; !generated){
     //show_debug_message("Creating new wall");
     if(random(10) &gt;= 5){
         instance_create(0,room_height-8,obj_wall_1);
-        if(random(2) &gt;=  1){
+        var item = random(3);
+        if(item &gt;=  2){
             instance_create(powerup_x,powerup_y,obj_speedup);
             instance_create(room_width-powerup_x,powerup_y,obj_speedup);
-        }else{
+        }else if(item &gt;= 1){
             instance_create(powerup_x,powerup_y,obj_health);
             instance_create(room_width-powerup_x-22,powerup_y,obj_health);
+        }else{
+            instance_create(powerup_x,powerup_y,obj_eggup);
+            instance_create(room_width-powerup_x,powerup_y,obj_eggup);
         }
     }
     else
