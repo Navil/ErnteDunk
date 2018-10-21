@@ -59,7 +59,25 @@ MOVEUP = keyboard_check(ord('W'));
 MOVEDOWN = keyboard_check(ord('S'));
 ATTACK = keyboard_check(ord('E'));
 
+var index = spr_player1;
+switch(num_lives){
+    case 3: index = spr_player1;
+    player_gravity = 3;
+    break;
+    case 2: index = spr_p1_2h;
+    player_gravity = 4;
+    break;
+    case 1: index = spr_p1_1h;
+    player_gravity = 5;
+    break;
+    case 0: index = spr_p1_0h;
+    player_gravity = 9;
+    break;
+}
+sprite_index = index;
+
 event_inherited();
+
 
 
     

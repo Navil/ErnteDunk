@@ -422,6 +422,7 @@ if (knockingback == 1) {
     image_angle += 720/knockback_duration_wind;
 }
 
+
 </string>
           </argument>
         </arguments>
@@ -566,6 +567,7 @@ instance_destroy(other);
           <argument>
             <kind>1</kind>
             <string>if(!disabled &amp;&amp; !global.gameover){
+
     //show_debug_message("Hit Wall");
     num_lives -= 1;
     audio_play_sound(rooster0, 10, false);
@@ -573,7 +575,13 @@ instance_destroy(other);
         //room_restart();
         background_vspeed[0] = 0;
         global.gameover = true;
+        room_goto(win);
         alarm[9] = 3*room_speed;
+          if(player1.num_lives &lt;= 0){
+        room_goto(winp2);
+    }else if(player2.num_lives &lt;= 0){
+        room_goto(main_menu);
+    }
     }else{
         damage_immune = true;
         alarm[10] = 3*room_speed;
@@ -696,6 +704,7 @@ if(diffX &gt; diffY){
     }else if(player2.num_lives &lt;= 0){
         draw_text(room_width/2, room_height/2, "PLAYER 1 WON!");
     }
+    
 }
 
 </string>
