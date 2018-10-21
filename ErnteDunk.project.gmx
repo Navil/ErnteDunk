@@ -16,6 +16,7 @@
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_wind</sprite>
     <sprite>sprites\spr_wall_simple</sprite>
+    <sprite>sprites\spr_egg_rotate</sprite>
     <sprite>sprites\spr_wall_1</sprite>
     <sprite>sprites\spr_lives</sprite>
     <sprite>sprites\spr_egg</sprite>
