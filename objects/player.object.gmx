@@ -575,7 +575,6 @@ instance_destroy(other);
         //room_restart();
         background_vspeed[0] = 0;
         global.gameover = true;
-        room_goto(win);
         alarm[9] = 3*room_speed;
           if(player1.num_lives &lt;= 0){
         room_goto(winp2);
