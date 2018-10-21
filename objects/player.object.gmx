@@ -430,9 +430,9 @@ if (knockingback == 1) {
     <event eventtype="4" ename="obj_eggup">
       <action>
         <libid>1</libid>
-        <id>611</id>
-        <kind>6</kind>
-        <userelative>-1</userelative>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
         <exetype>2</exetype>
@@ -444,11 +444,12 @@ if (knockingback == 1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hasEgg</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>true</string>
+            <string>
+if(damage_immune == false){
+    hasEgg = true;
+}
+instance_destroy(other);
+</string>
           </argument>
         </arguments>
       </action>
@@ -470,8 +471,11 @@ if (knockingback == 1) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(num_lives &lt; 3){
-    num_lives += 1;
+            <string>
+if(damage_immune == false){
+    if(num_lives &lt; 3){
+        num_lives += 1;
+    }
 }
 instance_destroy(other);
 </string>
@@ -535,7 +539,9 @@ instance_destroy(other);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>playerSpeed += 2;
+            <string>if(damage_immune == false){
+playerSpeed += 2;
+}
 instance_destroy(other);
 </string>
           </argument>
