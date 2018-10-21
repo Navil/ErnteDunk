@@ -382,12 +382,16 @@ if (ATTACK){
     
         var inst;
         var obj = obj_wind;
+        var spawn_x = x;
+        var spawn_y = y;
         if(hasEgg){
             obj = obj_egg;
             hasEgg = false;
+            spawn_x -= 100;
+            spawn_y -= 50;
         }
         //show_debug_message("Attacking "+string(x)+" "+string(y));
-        inst = instance_create(x, y, obj);
+        inst = instance_create(spawn_x, spawn_y, obj);
         inst.speed = 10;
         if(view_direction==1)
             inst.direction = 0; //right
