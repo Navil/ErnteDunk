@@ -37,8 +37,8 @@ jump_speed = 25;
 
 knockingback = 0; // -1= left, 0= none, 1= right
 knockback_distance_touch = 50;
-knockback_duration_wind = 2*room_speed; //seconds
-knockback_duration_egg = 2.5*room_speed; //seconds
+knockback_duration_wind = 1.5*room_speed; //seconds
+knockback_duration_egg = 2.3*room_speed; //seconds
 
 can_shoot = true;
 
