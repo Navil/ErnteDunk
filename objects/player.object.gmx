@@ -580,7 +580,7 @@ instance_destroy(other);
           if(player1.num_lives &lt;= 0){
         room_goto(winp2);
     }else if(player2.num_lives &lt;= 0){
-        room_goto(main_menu);
+        room_goto(winp1);
     }
     }else{
         damage_immune = true;

@@ -29,6 +29,7 @@
     <sprite>sprites\spr_exit</sprite>
     <sprite>sprites\spr_speed_up</sprite>
     <sprite>sprites\spr_end_p2</sprite>
+    <sprite>sprites\spr_end_p1</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_wall</background>
@@ -58,11 +59,13 @@
     <object>objects\obj_wind_menu</object>
     <object>objects\obj_eggup</object>
     <object>objects\obj_winp2</object>
+    <object>objects\obj_winp1</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\main_menu</room>
     <room>rooms\game</room>
     <room>rooms\winp2</room>
+    <room>rooms\winp1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
