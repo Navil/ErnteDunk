@@ -13,9 +13,11 @@
     <sprite>sprites\spr_menu_play</sprite>
     <sprite>sprites\spr_player1</sprite>
     <sprite>sprites\spr_p1_2h</sprite>
+    <sprite>sprites\spr_p2_2h</sprite>
     <sprite>sprites\spr_p1_1h</sprite>
+    <sprite>sprites\spr_p2_1h</sprite>
     <sprite>sprites\spr_p1_0h</sprite>
-    <sprite>sprites\sprite17</sprite>
+    <sprite>sprites\spr_chickendinner</sprite>
     <sprite>sprites\spr_player2</sprite>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_wind</sprite>

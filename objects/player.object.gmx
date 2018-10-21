@@ -113,28 +113,12 @@ visible = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(main_menu);
+            <string>          if(player1.num_lives &lt;= 0){
+        room_goto(winp2);
+    }else if(player2.num_lives &lt;= 0){
+        room_goto(winp1);
+    }
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>212</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_end_sound</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>6</kind>
-            <sound>sound1</sound>
           </argument>
         </arguments>
       </action>
@@ -575,11 +559,7 @@ instance_destroy(other);
         //room_restart();
         background_vspeed[0] = 0;
         global.gameover = true;
-          if(player1.num_lives &lt;= 0){
-        room_goto(winp2);
-    }else if(player2.num_lives &lt;= 0){
-        room_goto(winp1);
-    }
+        alarm[9] = 0.5*room_speed;
     }else{
         damage_immune = true;
         alarm[10] = 3*room_speed;
@@ -692,7 +672,7 @@ if(diffX &gt; diffY){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.gameover){
+            <string>/*if(global.gameover){
     draw_set_valign(fa_middle);
     draw_set_halign(fa_center);
     draw_set_colour(c_black);
@@ -704,7 +684,7 @@ if(diffX &gt; diffY){
     }
     
 }
-
+*/
 </string>
           </argument>
         </arguments>

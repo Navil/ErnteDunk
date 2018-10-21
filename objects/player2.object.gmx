@@ -60,6 +60,21 @@ MOVEUP = keyboard_check(vk_up);
 MOVEDOWN = keyboard_check(vk_down);
 ATTACK = keyboard_check(ord('P'));
 
+
+var index = spr_player2;
+switch(num_lives){
+    case 3: index = spr_player2;
+    player_gravity = 3;
+    break;
+    case 2: index = spr_p2_2h;
+    player_gravity = 4;
+    break;
+    case 1: index = spr_p2_1h;
+    player_gravity = 5;
+    break;
+}
+
+sprite_index = index;
 event_inherited();
 
 </string>
