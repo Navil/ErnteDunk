@@ -55,7 +55,7 @@ powerup_y = 1150;
 if(y &lt;= 10 &amp;&amp; !generated){
     //show_debug_message("y: "+string(y));
     //show_debug_message("Creating new wall");
-    if(random(10) &gt;= 5){
+    if(random(10) &gt;= 4){
         instance_create(0,room_height-8,obj_wall_1);
         var item = random(3);
         if(item &gt;=  2){

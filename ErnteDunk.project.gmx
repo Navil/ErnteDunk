@@ -6,8 +6,13 @@
   <datafiles number="1" name="datafiles"/>
   <NewExtensions/>
   <sounds name="sound">
+    <sound>sound\won</sound>
     <sound>sound\rooster0</sound>
     <sound>sound\sound1</sound>
+    <sound>sound\menu_click</sound>
+    <sound>sound\hit</sound>
+    <sound>sound\sound_pickup</sound>
+    <sound>sound\start</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_menu_play</sprite>
@@ -17,6 +22,7 @@
     <sprite>sprites\spr_p1_1h</sprite>
     <sprite>sprites\spr_p2_1h</sprite>
     <sprite>sprites\spr_p1_0h</sprite>
+    <sprite>sprites\spr_p2_0h</sprite>
     <sprite>sprites\spr_chickendinner</sprite>
     <sprite>sprites\spr_player2</sprite>
     <sprite>sprites\spr_wall</sprite>

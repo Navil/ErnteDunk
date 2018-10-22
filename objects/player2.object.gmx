@@ -71,6 +71,9 @@ switch(num_lives){
     break;
     case 1: index = spr_p2_1h;
     player_gravity = 5;
+    break;    
+    case 0: index = spr_p2_0h;
+    player_gravity = 9;
     break;
 }
 
